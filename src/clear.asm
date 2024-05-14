@@ -14,7 +14,6 @@ global _start
 	mov edi, 1     ; stdout
 	mov ecx, clear ; 'clear' escape sequence
 	mov edx, 2     ; length of string
-	syscall
 	
 %elif BITS == 64
 
@@ -22,8 +21,8 @@ global _start
 	mov rdi, 1     ; stdout
 	mov rsi, clear ; 'clear' escape sequence
 	mov rdx, 2     ; length of string
-	syscall
 
 %endif
 
-	exit 0
+	syscall ; call 'write' with the given parameters
+	exit 0 ; exit the program
