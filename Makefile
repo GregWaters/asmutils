@@ -4,6 +4,7 @@ $(shell mkdir -p bin/ obj/) # make the directories we need when make is run, if 
 define MAKE_EXECUTABLE
 	nasm -f elf$(BITS) src/$@.asm -o obj/$@.o -I src/utility/ -D BITS=$(BITS)
 	ld -O1 obj/$@.o -o bin/$@
+	strip -s bin/$@
 endef
 
 all: clear true false
