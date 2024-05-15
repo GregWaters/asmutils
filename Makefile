@@ -1,5 +1,7 @@
 BITS := $(shell getconf LONG_BIT) # determine whether or not the system is 32 or 64 bit
 FILES := $(patsubst src/%.asm,%,$(wildcard src/*.asm)) # get all source files without their extensions or path
+
+# Ansi escape codes for different colors
 TXT_BLUE := '\e[1;34m'
 TXT_GREEN := '\e[0;32m'
 TXT_WHITE := '\e[1;37m'
