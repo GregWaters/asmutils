@@ -18,8 +18,7 @@ endef
 .PHONY: clean all
 
 all: $(FILES)
-	@echo -en $(TXT_GREEN)
-	@echo All files assembled successfully!
+	@echo -e $(TXT_GREEN)All files assembled successfully!
 
 $(FILES):
 	$(ASSEMBLE)
