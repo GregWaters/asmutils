@@ -1,3 +1,5 @@
+; true - do nothing, successfully
+
 %include "macros.asm"
 
 section .text
