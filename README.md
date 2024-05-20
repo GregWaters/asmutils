@@ -1,6 +1,6 @@
 # Linux utilities in x86 Assembly
 
-Small, fast executables for daily command-line tasks. Be aware that they may lack additional functionality aside from their main use case! (For example, the 'clear' command cannot clear text on another terminal using the `-T` flag)
+Small, fast executables for daily command-line tasks. Be aware that they may lack additional functionality aside from their main use case! (For example, the `clear` command cannot clear text on another terminal using the `-T` flag)
 
 # Build all binaries
 
