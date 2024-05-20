@@ -9,6 +9,8 @@
 %define arg4 edi
 %define arg5 ebp
 
+%define argv esi
+
 %elif BITS == 64
 
 %define syscall_reg rax
@@ -19,13 +21,17 @@
 %define arg4 r8
 %define arg5 r9
 
+%define argv rsi ; arg values - string representation of cmdline arguments
+
 %endif
+
+%define argc edi ; arg count - number of cmdline arguments (including the executable name)
 
 %macro exit $1
 
 %if BITS == 32
     mov syscall_reg, 1 ; x86 exit call number
-%elif BITS == 64
+%else
     mov syscall_reg, 60 ; x86-64 exit call number
 %endif
 
