@@ -12,7 +12,7 @@ endef
 .PHONY: clean all
 
 all: $(FILES)
-	@echo -e '\e[0;32m'All files assembled successfully!'\e[0m'
+	@echo -e '\e[0;32mAll files assembled successfully!\e[0m'
 
 $(FILES):
 	$(ASSEMBLE)
