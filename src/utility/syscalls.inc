@@ -2,11 +2,9 @@
 ; syscalls.inc - bit-independent utility macros for system calls
 ;==============================================================================
 
-; Great guide to system call numbers and conventions: https://syscall.sh
-
 
 ;==============================================================================
-; Syscall numbers
+; Syscall numbers (added when needed as a dependency)
 ;==============================================================================
 %if BITS == 32
     %iassign _EXIT 1
