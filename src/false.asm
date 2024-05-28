@@ -1,10 +1,15 @@
+;==============================================================================
 ; false - do nothing, unsuccessfully
+;==============================================================================
 
-%include "macros.asm"
+%include "macros.inc"
+%include "syscalls.inc"
 
 section .text
 global _start
 
+
 _start:
-    exit 1
-    
+    smov callreg, _EXIT
+    mov arg0, 1
+    syscall

@@ -1,23 +1,25 @@
+;==============================================================================
 ; clear - clear the terminal screen
+;==============================================================================
 
-%include "macros.asm"
-
-section .data
-	clear: db `\ec`
+%include "macros.inc"
+%include "syscalls.inc"
 
 section .text
 global _start
 
-	_start:
 
-%if BITS == 32
-	mov eax, 4     ; 'write' syscall number (x86)
-%else
-	mov rax, 1     ; 'write' syscall number (x64)
-%endif
-
+_start:
+	smov callreg, _WRITE
 	mov arg0, 1     ; stdout
 	mov arg1, clear ; 'clear' escape sequence
 	mov arg2, 2     ; length of string
-	syscall ; call 'write' with the given parameters
-	exit 0 ; exit the program
+	syscall
+	
+	smov callreg, _EXIT
+	dec arg0
+	syscall
+
+
+section .data
+	clear: db `\ec`

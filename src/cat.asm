@@ -1,26 +1,27 @@
+;==============================================================================
 ; cat - concatenate files and print on the standard output
+;==============================================================================
 
-%include "macros.asm"
+%include "macros.inc"
+%include "syscalls.inc"
 
-section .data
-filename: db "test.txt"
+%assign BUFFER_SIZE 0x4000 ; 16KiB buffer
 
 section .text
 global _start
 
+
 _start:
-
-%if BITS == 32
-    mov eax, 5 ; open file (x86)
-%else
-    mov rax, 2 ; open file (x86-64)
-%endif
-
+    mov callreg, _OPEN
     mov arg0, filename
     xor arg1, arg1 ; open file in 'read only' mode
-    mov arg2, 0q400 ; read as owner (octal constant) this may be incorrect!
+    mov arg2, 0q444 ; octal constant
     syscall
 
-    ; TODO - hopefully I can find a way to use the pipe syscall to put the file's bytes directly into stdout
+    smov callreg, _EXIT
+    xor arg0, arg0
+    syscall
 
-    exit 0
+
+section .data
+filename: db "test.txt"
