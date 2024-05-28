@@ -23,3 +23,4 @@ _start:
 
 section .data
 	clear: db `\ec`
+	
