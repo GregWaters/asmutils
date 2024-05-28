@@ -5,20 +5,27 @@
 %include "macros.inc"
 %include "syscalls.inc"
 
-%assign BUFFER_SIZE 0x4000 ; 16KiB buffer
-
 section .text
 global _start
 
-
 _start:
-    mov callreg, _OPEN
+    smov eax, _OPEN
     mov arg0, filename
     xor arg1, arg1 ; open file in 'read only' mode
     mov arg2, 0q444 ; octal constant
     syscall
 
-    smov callreg, _EXIT
+%if BITS == 32
+    mov edi, eax ; store file descriptor in edi
+    mov eax, _SENDFILE
+    mov arg1, 1 ; stdout
+
+%else
+    ; 64 bit code
+
+%endif
+
+    smov eax, _EXIT
     xor arg0, arg0
     syscall
 
