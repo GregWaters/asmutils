@@ -10,13 +10,13 @@ global _start
 
 
 _start:
-	smov eax, _WRITE
+	mov eax, _WRITE
 	mov arg0, 1     ; stdout
 	mov arg1, clear ; 'clear' escape sequence
 	mov arg2, 2     ; length of string
 	syscall
 	
-	smov eax, _EXIT
+	mov eax, _EXIT
 	dec arg0
 	syscall
 

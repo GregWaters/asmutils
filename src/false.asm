@@ -10,6 +10,6 @@ global _start
 
 
 _start:
-    smov eax, _EXIT
+    mov eax, _EXIT
     mov arg0, 1
     syscall

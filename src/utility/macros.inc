@@ -5,7 +5,7 @@
 ;==============================================================================
 ; smov - an automatically optimizing 'mov' instruction
 ;
-; while the utility is incredibly helpful at times,
+; while the utility is quite helpful at times,
 ; the ultimate purpose is to have readable source code
 ; without sacrificing small, performant binaries.
 ; 
