@@ -17,7 +17,7 @@ _start:
     mov eax, _OPEN
     mov ebx, filename
     xor ecx, ecx ; open file in 'read only' mode (0)
-    mov edx, 0q444 ; -r--r--r--
+    mov edx, 0q755
     syscall
 
     mov edi, eax ; store file descriptor in edi
@@ -30,7 +30,7 @@ _start:
     mov ebx, 1 ; output fd
     mov ecx, edi ; input fd
     mov edx, offset
-    lea esi, statbuf + 44 ; get file size from statbuf (bytes we're sending to stdout)
+    lea esi, [statbuf + 44] ; get file size from statbuf (bytes we're sending to stdout)
     syscall
 
 %else
@@ -38,7 +38,7 @@ _start:
     mov rax, _OPEN
     mov rdi, filename
     xor rsi, rsi
-    mov rdx, 0q444
+    mov rdx, 0q755
     syscall
 
     mov r15, rax ; store file descriptor in r15d, just in case it's clobbered
@@ -51,7 +51,7 @@ _start:
     mov rdi, 1
     mov rsi, r15
     mov rdx, offset
-    mov r10, statbuf + 48 ; get file size from statbuf (bytes we're sending to stdout)
+    mov r10, [statbuf + 48] ; get file size from statbuf (bytes we're sending to stdout)
     syscall
 
 %endif
