@@ -19,7 +19,7 @@ _start:
 	inc al
 	inc edi
 	mov rsi, clear
-	mov dl, 11
+	mov dl, 10
 	syscall ; write(stdout, "\e[H\e[2J\e[3J", 11)
 
 	mov al, 60
@@ -28,4 +28,4 @@ _start:
 
 
 section .data
-	clear: db `\e[H\e[2J\e[3J`
+	clear: db `\e[H\e[J\e[3J`
