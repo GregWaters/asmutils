@@ -9,7 +9,7 @@ global _start
 _start:
     mov rax, 2
     mov rdi, filename
-    mov rdx, 0q755 ; standard permissions -- may be incorrect
+    mov rdx, 0o755 ; standard permissions -- may be incorrect
     syscall ; open(filename)
 
     mov rdi, rax
@@ -18,8 +18,8 @@ _start:
     syscall
 
     mov rax, 40
+    mov rsi, rdi
     mov rdi, 1
-    mov rsi, r15 ; relic from a distant past
     mov rdx, 0 ; interpreted as nullptr
     mov r10, [statbuf + 48] ; statbuf.st_size
     syscall
