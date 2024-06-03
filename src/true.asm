@@ -7,5 +7,6 @@ global _start
 
 
 _start:
-    mov al, 60 ; exit()
-    syscall
+    mov rax, 60
+    xor rdi, rdi
+    syscall ; exit(0)

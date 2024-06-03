@@ -10,9 +10,9 @@ global _start
 
 _start:
     ; basically being a prick and lying so the program works
-    mov eax, 72
-    inc edi
-    mov esi, 4
+    mov rax, 72
+    mov rdi, 1
+    mov rsi, 4
     syscall ; fcntl(stdout, F_SETFD, O_RDONLY)
 
     pop rcx ; get argc
@@ -20,6 +20,7 @@ _start:
     jl read_from_stdout ; read from stdout if no args are provided
 
     pop rbx ; get argv
+    xor r15, r15 ; zero out iterator
 
 loop_begin:
     ; increment our iterator
@@ -57,8 +58,8 @@ loop_begin:
     cmp r15, rcx
     jne loop_begin ; fallthrough if iterator == argc
     
-    mov eax, 60 ; must use eax here, as bits beyond 16 may be overwritten
-    dec edi
+    mov rax, 60
+    xor rdi, rdi
     syscall ; exit(0)
 
 read_from_stdout:
