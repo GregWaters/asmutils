@@ -1,9 +1,5 @@
 bin/
 obj/
 
-src/time.asm
-src/rm.asm
-src/echo.asm
-
 TEST_*
 string.inc

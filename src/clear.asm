@@ -1,7 +1,3 @@
-;==============================================================================
-; clear - you win, but can't say that out loud
-;==============================================================================
-
 section .text
 global _start
 
@@ -15,8 +11,8 @@ _start:
 
 	mov al, 60
 	dec rdi
-	syscall ; exit(0)
-
+	syscall
+	
 
 section .data
 	clear: db `\e[H\e[J\e[3J`
